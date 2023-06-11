@@ -1,19 +1,19 @@
-CPPFLAGS = -Wall -Wextra -pedantic -Og -std=c++17 -g
+CPPFLAGS = -Og -c -std=c++14 -Wextra -Wall -pedantic
 OBJECTS = src/*.o test/*.o
-GEN = src/scanner.c
+GEN = src/scanner.cpp
 EXEC = scan
 
 # executable(s)
 scan: src/main.o src/scanner.o
 	g++ -o $@ $^
 
-# source code
-%src/.o: %src/.c
-	g++ $(CPPFLAGS) $^ $@
-
 # generated code
 src/scanner.cpp: src/scanner.flex
-	flex -+ -o$@ $^
+	flex -i -o$@ $^
+
+# source->object code
+%src/.o: %src/.cpp
+	g++ $(CPPFLAGS) $^ $@
 
 clean:
 	rm -f $(GEN) $(EXEC) $(OBJECTS)

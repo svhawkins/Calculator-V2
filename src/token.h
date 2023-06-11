@@ -1,21 +1,17 @@
+#pragma once
 /*
 06.10.2023
 token.hpp
 
 - header file containing an enumerated type for tokens
-- includes vector to access token type name
 */
 
-#pragma once
 #include <iostream>
-#include <vector>
-#include <string>
-
 typedef enum {
 
   // miscellaneous token kinds
-  TOKEN_ERROR = 0,
-  TOKEN_EOF,
+  TOKEN_EOF = 0,
+  TOKEN_ERROR,
   TOKEN_SEMI,
 
   // tokens for reserved words
@@ -28,8 +24,8 @@ typedef enum {
   // numeric type tokens
   TOKEN_INT,
   TOKEN_FLOAT, // floating point
-  TOKEN_IMAG,
-  TOKEN_CMPLX,
+  TOKEN_IMAG_INT,
+  TOKEN_IMAG_FLOAT,
   TOKEN_BOOL,
   TOKEN_IDENTIFIER,
 
@@ -90,10 +86,3 @@ typedef enum {
   TOKEN_COMMA
 } token_t;
 const int TOKEN_KINDS = TOKEN_COMMA + 1;
-
-std::vector<std::string> token_names = { "ERROR", "EOF", "SEMI", "INTEGER", "REAL", "COMPLEX", "BOOLEAN", "IMAGINARY",
-					 "INT", "FLOAT", "IMAG", "CMPLX", "BOOL", "IDENTIFIER",
-					 "LPAR", "RPAR", "INC", "DEC", "EXCL", "PLUS", "MINUS", "BNOT", "EXP", "MULT", "DIV", "REM", "FDIV", "MOD",
-					 "LSHIFT", "RSHIFT", "LESS", "LEQ", "GREAT", "GEQ", "EQUAL", "NEQUAL", "BAND", "BNAND", "BXOR", "BXNOR",
-					 "BOR", "BNOR", "LAND", "LNAND", "LXOR", "LXNOR", "LOR", "LNOR", "ASSIGN", "COMMA"
-					};
